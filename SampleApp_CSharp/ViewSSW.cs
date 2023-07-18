@@ -65,7 +65,7 @@ namespace Scanner_SDK_Sample_Application
         private const string UNABLE_TO_READ_USER_BANK = "Unable to read user bank";
         private const string SSW_TAB_NAME = "tabSSW";
 
-        private string currentUpca = string.Empty;
+        private string currentQRCode = string.Empty;
         private string currentEpcId = string.Empty;
 
         private string userBankASCII = string.Empty;
@@ -317,9 +317,10 @@ namespace Scanner_SDK_Sample_Application
             attributesXml = attributesXml.Replace("OFFSET", offset.ToString());
             attributesXml = attributesXml.Replace("COMMAND", ((int)RfidCommand.Write).ToString());
 
-            SetAttributes(attributesXml);
+			MessageBox.Show("Bring the tag in front of the RFID scanner and press OK", "Write", MessageBoxButtons.OK);
+			SetAttributes(attributesXml);
 
-            return GetRfidCommandStatus();
+			return GetRfidCommandStatus();
         }
 
         /// <summary>
@@ -468,36 +469,37 @@ namespace Scanner_SDK_Sample_Application
         /// <summary>
         /// Extract UPCA barcode company prefix and item value.
         /// </summary>
-        private void ExtractUpcData()
+        private void ExtractQRData()
         {
             SetStatusIcon(CommandStatus.None);
 
-            if (string.IsNullOrEmpty(currentUpca))
+            if (string.IsNullOrEmpty(currentQRCode))
             {
-                MessageBox.Show("UPCA barcode should not be null or empty.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("QR code should not be null or empty.", "Error", MessageBoxButtons.OK);
                 return;
             }
-            if (currentUpca.Length != UPC_LENGTH)
-            {
-                MessageBox.Show("UPCA barcode length is not valid.", "Error", MessageBoxButtons.OK);
-                return;
-            }
-            UpdateCompanyItemValues();
+            //if (currentQRCode.Length != UPC_LENGTH)
+            //{
+            //    MessageBox.Show("UPCA barcode length is not valid.", "Error", MessageBoxButtons.OK);
+            //    return;
+            //}
+            //UpdateCompanyItemValues();
         }
 
         private void UpdateCompanyItemValues()
         {
+            return;
             string currentPartition = GetComboboxItem(cmbPartition);
             int companyPrefixLength = 12 - Convert.ToInt16(currentPartition);
 
-            CurrentUpcConpanyPrefix = Convert.ToInt64(currentUpca.Substring(0, companyPrefixLength));
+            CurrentUpcConpanyPrefix = Convert.ToInt64(currentQRCode.Substring(0, companyPrefixLength));
             if (companyPrefixLength == 12)
             {
                 CurrentUpcItemReference = 0;
             }
             else
             {
-                CurrentUpcItemReference = Convert.ToInt64(currentUpca.Substring(companyPrefixLength, 12 - companyPrefixLength));
+                CurrentUpcItemReference = Convert.ToInt64(currentQRCode.Substring(companyPrefixLength, 12 - companyPrefixLength));
             }
         }
 
@@ -568,16 +570,16 @@ namespace Scanner_SDK_Sample_Application
                 return;
 
             string binaryValue = string.Empty;
-            UpdateCompanyItemValues();
-            binaryValue = PadLeftZero(EPC_HEADER_LENGTH, Convert.ToString(SGTIN_HEADER_VALUE, 2)) +
-                          PadLeftZero(EPC_FILTER_LENGTH, Convert.ToString(CurrentFilterValue, 2)) +
-                          PadLeftZero(EPC_PARTITION_LENGTH, Convert.ToString(CurrentPartitionValue, 2)) +
-                          PadLeftZero(CurrentPartitionRecord.CompanyPrefixBits, Convert.ToString(CurrentUpcConpanyPrefix, 2)) +
-                          PadLeftZero(CurrentPartitionRecord.ItemReferenceBits, Convert.ToString(CurrentUpcItemReference, 2)) +
-                          PadLeftZero(EPC_SERIAL_NUMBER_LENGTH, Convert.ToString(CurrentSerialNumber, 2));
+            //UpdateCompanyItemValues();
+            //binaryValue = PadLeftZero(EPC_HEADER_LENGTH, Convert.ToString(SGTIN_HEADER_VALUE, 2)) +
+            //              PadLeftZero(EPC_FILTER_LENGTH, Convert.ToString(CurrentFilterValue, 2)) +
+            //              PadLeftZero(EPC_PARTITION_LENGTH, Convert.ToString(CurrentPartitionValue, 2)) +
+            //              PadLeftZero(CurrentPartitionRecord.CompanyPrefixBits, Convert.ToString(CurrentUpcConpanyPrefix, 2)) +
+            //              PadLeftZero(CurrentPartitionRecord.ItemReferenceBits, Convert.ToString(CurrentUpcItemReference, 2)) +
+            //              PadLeftZero(EPC_SERIAL_NUMBER_LENGTH, Convert.ToString(CurrentSerialNumber, 2));
 
-            var hexValue = BinaryStringToHexString(binaryValue);
-            SetTextboxText(txtNewEpcId, hexValue);
+            //var hexValue = BinaryStringToHexString(binaryValue);
+            SetTextboxText(txtNewEpcId, PadLeftZero(24, currentQRCode.ToUpper()));
         }
 
 
@@ -826,13 +828,16 @@ namespace Scanner_SDK_Sample_Application
         private void btnWriteTag_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(GetTextboxText(txtUpcaBarcode)) || string.IsNullOrEmpty(GetTextboxText(txtEpcId)) || string.IsNullOrEmpty(GetTextboxText(txtNewEpcId)))
-                return;
-
-            if (string.IsNullOrEmpty(txtSerialNumber.Text))
             {
-                MessageBox.Show("Serial Number should not be empty.", "Error", MessageBoxButtons.OK);
-                return;
-            }
+				MessageBox.Show("Scan must be performed first.", "Error", MessageBoxButtons.OK);
+				return;
+			}
+
+            //if (string.IsNullOrEmpty(txtSerialNumber.Text))
+            //{
+            //    MessageBox.Show("Serial Number should not be empty.", "Error", MessageBoxButtons.OK);
+            //    return;
+            //}
 
             SetStatusIcon(CommandStatus.None);
             SetTextboxText(txtUserBank, string.Empty);
@@ -859,9 +864,12 @@ namespace Scanner_SDK_Sample_Application
         private void btnVerifyTag_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(GetTextboxText(txtUpcaBarcode)) || string.IsNullOrEmpty(GetTextboxText(txtEpcId)) || string.IsNullOrEmpty(GetTextboxText(txtNewEpcId)))
-                return;
+			{
+				MessageBox.Show("Scan must be performed first.", "Error", MessageBoxButtons.OK);
+				return;
+			}
 
-            SetStatusIcon(CommandStatus.None);
+			SetStatusIcon(CommandStatus.None);
             SetTextboxText(txtUserBank, string.Empty);
             rdoASCII.Checked = rdoHex.Checked = false;
 

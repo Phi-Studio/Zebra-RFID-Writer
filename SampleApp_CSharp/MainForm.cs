@@ -11,6 +11,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using CoreScanner;
+using System.Diagnostics;
 
 namespace Scanner_SDK_Sample_Application
 {
@@ -1850,13 +1851,29 @@ namespace Scanner_SDK_Sample_Application
                 {
                     tabCtrl.Invoke(new MethodInvoker(delegate
                     {
-                        tabCtrl.TabPages.Add(tabSSW);
-                    }));
+						tabCtrl.TabPages.Add(tabSSW);
+						tabCtrl.SelectTab(tabSSW);
+						foreach (TabPage tab in tabCtrl.TabPages)
+						{
+                            if (tab != tabSSW)
+							{
+								tabCtrl.TabPages.Remove(tab);
+							}
+						}
+					}));
                 }
                 else
                 {
-                    tabCtrl.TabPages.Add(tabSSW);
-                }                
+					tabCtrl.TabPages.Add(tabSSW);
+					tabCtrl.SelectTab(tabSSW);
+                    foreach (TabPage tab in tabCtrl.TabPages)
+                    {
+						if (tab != tabSSW)
+						{
+							tabCtrl.TabPages.Remove(tab);
+						}
+					}
+				}                
             }
 
 

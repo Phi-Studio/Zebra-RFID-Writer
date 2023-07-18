@@ -356,13 +356,21 @@ namespace Scanner_SDK_Sample_Application
 
                 if(GetSelectedTabName().Equals(SSW_TAB_NAME))
                 {
-                    if (GetScanDataType(tmpScanData) == ST_UPCA)
+                    if (GetScanDataType(tmpScanData) == ST_QR_CODE)
                     {
-                        currentUpca = GetScanDataLabel(tmpScanData);
-                        currentUpca = GetReadableScanDataLabel(currentUpca);
-                        SetTextboxText(txtUpcaBarcode, currentUpca);
+                        string code = GetScanDataLabel(tmpScanData);
+						code = GetReadableScanDataLabel(code);
+                        if (code.Contains("/rfid_"))
+                        {
+                            currentQRCode = code.Substring(code.IndexOf("/rfid_") + 6);
+							SetTextboxText(txtUpcaBarcode, currentQRCode);
 
-                        ExtractUpcData();
+							ExtractQRData();
+						}
+                        else
+                        {
+							MessageBox.Show("Unrecognized QR code format", "Error", MessageBoxButtons.OK);
+						}
                     }
                     if(GetScanDataType(tmpScanData) == ST_EPC_RAW) 
                     {
@@ -370,8 +378,9 @@ namespace Scanner_SDK_Sample_Application
                         currentEpcId = GetReadableScanDataLabel(currentEpcId);
                         SetTextboxText(txtEpcId, currentEpcId);
 
-                        ExtractEpcData();
-                    }                   
+						//ExtractEpcData();
+						SetStatusIcon(CommandStatus.None);
+					}                   
                     CreateNewEpcId();
                 }
             }

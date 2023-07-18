@@ -317,21 +317,21 @@ namespace Scanner_SDK_Sample_Application
             this.tabCtrl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabCtrl.Controls.Add(this.tabBarcode);
-            this.tabCtrl.Controls.Add(this.tabImgVdo);
-            this.tabCtrl.Controls.Add(this.tabISO15434);
-            this.tabCtrl.Controls.Add(this.tabScnAction);
-            this.tabCtrl.Controls.Add(this.tabRsm);
-            this.tabCtrl.Controls.Add(this.tabConfig);
-            this.tabCtrl.Controls.Add(this.tabScan2Connect);
-            this.tabCtrl.Controls.Add(this.tabMisc);
-            this.tabCtrl.Controls.Add(this.tabScale);
+            //this.tabCtrl.Controls.Add(this.tabBarcode);
+            //this.tabCtrl.Controls.Add(this.tabImgVdo);
+            //this.tabCtrl.Controls.Add(this.tabISO15434);
+            //this.tabCtrl.Controls.Add(this.tabScnAction);
+            //this.tabCtrl.Controls.Add(this.tabRsm);
+            //this.tabCtrl.Controls.Add(this.tabConfig);
+            //this.tabCtrl.Controls.Add(this.tabScan2Connect);
+            //this.tabCtrl.Controls.Add(this.tabMisc);
+            //this.tabCtrl.Controls.Add(this.tabScale);
             this.tabCtrl.Controls.Add(this.tabSSW);
-            this.tabCtrl.Controls.Add(this.tabXml);
+            //this.tabCtrl.Controls.Add(this.tabXml);
             this.tabCtrl.Location = new System.Drawing.Point(473, 12);
             this.tabCtrl.Name = "tabCtrl";
             this.tabCtrl.SelectedIndex = 0;
-            this.tabCtrl.Size = new System.Drawing.Size(519, 494);
+            this.tabCtrl.Size = new System.Drawing.Size(419, 294);
             this.tabCtrl.TabIndex = 1;
             this.tabCtrl.SelectedIndexChanged += new System.EventHandler(this.tabCtrl_SelectedIndexChanged);
             // 
@@ -2114,21 +2114,21 @@ namespace Scanner_SDK_Sample_Application
             this.tabSSW.Controls.Add(this.btnClear);
             this.tabSSW.Controls.Add(this.txtEpcId);
             this.tabSSW.Controls.Add(this.label14);
-            this.tabSSW.Controls.Add(this.rdoHex);
-            this.tabSSW.Controls.Add(this.rdoASCII);
+            //this.tabSSW.Controls.Add(this.rdoHex);
+            //this.tabSSW.Controls.Add(this.rdoASCII);
             this.tabSSW.Controls.Add(this.btnVerifyTag);
-            this.tabSSW.Controls.Add(this.label7);
+            //this.tabSSW.Controls.Add(this.label7);
             this.tabSSW.Controls.Add(this.btnWriteTag);
-            this.tabSSW.Controls.Add(this.cmbPartition);
-            this.tabSSW.Controls.Add(this.cmbFilterValue);
+            //this.tabSSW.Controls.Add(this.cmbPartition);
+            //this.tabSSW.Controls.Add(this.cmbFilterValue);
             this.tabSSW.Controls.Add(this.statusIcon);
-            this.tabSSW.Controls.Add(this.label21);
-            this.tabSSW.Controls.Add(this.label22);
-            this.tabSSW.Controls.Add(this.chkAutoIncrement);
-            this.tabSSW.Controls.Add(this.txtSerialNumber);
-            this.tabSSW.Controls.Add(this.txtUserBank);
+            //this.tabSSW.Controls.Add(this.label21);
+            //this.tabSSW.Controls.Add(this.label22);
+            //this.tabSSW.Controls.Add(this.chkAutoIncrement);
+            //this.tabSSW.Controls.Add(this.txtSerialNumber);
+            //this.tabSSW.Controls.Add(this.txtUserBank);
             this.tabSSW.Controls.Add(this.txtNewEpcId);
-            this.tabSSW.Controls.Add(this.lblUserBank);
+            //this.tabSSW.Controls.Add(this.lblUserBank);
             this.tabSSW.Controls.Add(this.txtUpcaBarcode);
             this.tabSSW.Controls.Add(this.label25);
             this.tabSSW.Controls.Add(this.label23);
@@ -2142,7 +2142,7 @@ namespace Scanner_SDK_Sample_Application
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(237, 103);
+            this.btnClear.Location = new System.Drawing.Point(267, 103);
             this.btnClear.Margin = new System.Windows.Forms.Padding(2);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(50, 24);
@@ -2154,7 +2154,7 @@ namespace Scanner_SDK_Sample_Application
             // txtEpcId
             // 
             this.txtEpcId.BackColor = System.Drawing.Color.White;
-            this.txtEpcId.Location = new System.Drawing.Point(94, 53);
+            this.txtEpcId.Location = new System.Drawing.Point(124, 53);
             this.txtEpcId.Margin = new System.Windows.Forms.Padding(2);
             this.txtEpcId.Name = "txtEpcId";
             this.txtEpcId.ReadOnly = true;
@@ -2169,7 +2169,7 @@ namespace Scanner_SDK_Sample_Application
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(79, 13);
             this.label14.TabIndex = 34;
-            this.label14.Text = "Existing EPC Id";
+            this.label14.Text = "Current Tag ID";
             // 
             // rdoHex
             // 
@@ -2201,7 +2201,7 @@ namespace Scanner_SDK_Sample_Application
             // 
             // btnVerifyTag
             // 
-            this.btnVerifyTag.Location = new System.Drawing.Point(160, 103);
+            this.btnVerifyTag.Location = new System.Drawing.Point(190, 103);
             this.btnVerifyTag.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerifyTag.Name = "btnVerifyTag";
             this.btnVerifyTag.Size = new System.Drawing.Size(72, 24);
@@ -2209,6 +2209,7 @@ namespace Scanner_SDK_Sample_Application
             this.btnVerifyTag.Text = "Verify Tag";
             this.btnVerifyTag.UseVisualStyleBackColor = true;
             this.btnVerifyTag.Click += new System.EventHandler(this.btnVerifyTag_Click);
+            this.btnVerifyTag.Enabled = false;
             // 
             // label7
             // 
@@ -2222,7 +2223,7 @@ namespace Scanner_SDK_Sample_Application
             // 
             // btnWriteTag
             // 
-            this.btnWriteTag.Location = new System.Drawing.Point(94, 103);
+            this.btnWriteTag.Location = new System.Drawing.Point(124, 103);
             this.btnWriteTag.Margin = new System.Windows.Forms.Padding(2);
             this.btnWriteTag.Name = "btnWriteTag";
             this.btnWriteTag.Size = new System.Drawing.Size(63, 24);
@@ -2272,7 +2273,7 @@ namespace Scanner_SDK_Sample_Application
             // 
             this.statusIcon.ErrorImage = null;
             this.statusIcon.InitialImage = null;
-            this.statusIcon.Location = new System.Drawing.Point(291, 80);
+            this.statusIcon.Location = new System.Drawing.Point(321, 80);
             this.statusIcon.Margin = new System.Windows.Forms.Padding(2);
             this.statusIcon.Name = "statusIcon";
             this.statusIcon.Size = new System.Drawing.Size(17, 19);
@@ -2340,7 +2341,7 @@ namespace Scanner_SDK_Sample_Application
             // 
             this.txtNewEpcId.BackColor = System.Drawing.Color.White;
             this.txtNewEpcId.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtNewEpcId.Location = new System.Drawing.Point(94, 80);
+            this.txtNewEpcId.Location = new System.Drawing.Point(124, 80);
             this.txtNewEpcId.Margin = new System.Windows.Forms.Padding(2);
             this.txtNewEpcId.Name = "txtNewEpcId";
             this.txtNewEpcId.ReadOnly = true;
@@ -2361,7 +2362,7 @@ namespace Scanner_SDK_Sample_Application
             // txtUpcaBarcode
             // 
             this.txtUpcaBarcode.BackColor = System.Drawing.Color.White;
-            this.txtUpcaBarcode.Location = new System.Drawing.Point(94, 25);
+            this.txtUpcaBarcode.Location = new System.Drawing.Point(124, 25);
             this.txtUpcaBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.txtUpcaBarcode.Name = "txtUpcaBarcode";
             this.txtUpcaBarcode.ReadOnly = true;
@@ -2376,7 +2377,7 @@ namespace Scanner_SDK_Sample_Application
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(65, 13);
             this.label25.TabIndex = 11;
-            this.label25.Text = "New EPC Id";
+            this.label25.Text = "New Tag ID";
             // 
             // label23
             // 
@@ -2386,7 +2387,7 @@ namespace Scanner_SDK_Sample_Application
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(74, 13);
             this.label23.TabIndex = 10;
-            this.label23.Text = "Scan barcode";
+            this.label23.Text = "Scanned QRcode";
             // 
             // tabXml
             // 
@@ -2470,7 +2471,7 @@ namespace Scanner_SDK_Sample_Application
             // 
             this.grpTrigger.Controls.Add(this.btnReleaseTrigger);
             this.grpTrigger.Controls.Add(this.btnPullTrigger);
-            this.grpTrigger.Location = new System.Drawing.Point(8, 435);
+            this.grpTrigger.Location = new System.Drawing.Point(8, 235);
             this.grpTrigger.Name = "grpTrigger";
             this.grpTrigger.Size = new System.Drawing.Size(446, 53);
             this.grpTrigger.TabIndex = 3;
@@ -2545,7 +2546,7 @@ namespace Scanner_SDK_Sample_Application
             this.grpScanners.Controls.Add(this.lstvScanners);
             this.grpScanners.Location = new System.Drawing.Point(8, 91);
             this.grpScanners.Name = "grpScanners";
-            this.grpScanners.Size = new System.Drawing.Size(446, 338);
+            this.grpScanners.Size = new System.Drawing.Size(446, 138);
             this.grpScanners.TabIndex = 2;
             this.grpScanners.TabStop = false;
             this.grpScanners.Text = "Connected Scanners";
@@ -2569,7 +2570,7 @@ namespace Scanner_SDK_Sample_Application
             this.lstvScanners.MultiSelect = false;
             this.lstvScanners.Name = "lstvScanners";
             this.lstvScanners.ShowItemToolTips = true;
-            this.lstvScanners.Size = new System.Drawing.Size(434, 313);
+            this.lstvScanners.Size = new System.Drawing.Size(434, 113);
             this.lstvScanners.TabIndex = 0;
             this.lstvScanners.UseCompatibleStateImageBehavior = false;
             this.lstvScanners.View = System.Windows.Forms.View.Details;
@@ -2724,7 +2725,7 @@ namespace Scanner_SDK_Sample_Application
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(992, 531);
+            this.ClientSize = new System.Drawing.Size(892, 331);
             this.Controls.Add(this.stStripResult);
             this.Controls.Add(this.grpGeneral);
             this.Controls.Add(this.tabCtrl);
@@ -2732,7 +2733,7 @@ namespace Scanner_SDK_Sample_Application
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmScannerApp";
-            this.Text = "Scanner SDK C# Sample Application";
+            this.Text = "RFID writer from QR scan";
             this.Load += new System.EventHandler(this.frmScannerApp_Load);
             this.tabCtrl.ResumeLayout(false);
             this.tabBarcode.ResumeLayout(false);
